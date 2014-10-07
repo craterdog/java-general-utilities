@@ -83,6 +83,6 @@ public class RandomUtils {
     }
 
 
-    static private SecureRandom generator = new SecureRandom();
+    static private final SecureRandom generator = new SecureRandom();
 
 }
