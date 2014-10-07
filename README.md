@@ -74,33 +74,33 @@ The RandomUtils class provides some simple static methods that generate cryptogr
 The following example code demonstrates some of the utility methods:
 
 ```java
-    // generate a random integer
+    // Generate a random integer
     int integer = RandomUtils.pickRandomInt();
     byte[] bytes = ByteUtils.intToBytes(integer);
 
-    // print it out using different number bases
-    log.info("The random integer is: " + integer + "\n");
-    log.info("Its bytes in base 2 are: " + Base02Utils.encode(bytes) + "\n");
-    log.info("Its bytes in base 16 are: " + Base16Utils.encode(bytes) + "\n");
-    log.info("Its bytes in base 32 are: " + Base32Utils.encode(bytes) + "\n");
-    log.info("Its bytes in base 64 are: " + Base64Utils.encode(bytes) + "\n");
+    // Print it out using different number bases
+    log.info("The random integer is: {}\n", integer);
+    log.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes));
+    log.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes));
+    log.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes));
+    log.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes));
 
-    // define a string
+    // Define a string
     String string =
     "    \"Two roads diverged in a yellow wood,\n" +
     "    And sorry I could not travel both\n" +
     "    And be one traveler, long I stood\n" +
     "    And looked down one as far as I could\n" +
     "    To where it bent in the undergrowth;\"";
-    byte[] bytes = ByteUtils.stringToBytes(string);
+    bytes = ByteUtils.stringToBytes(string);
     String pad = "    ";
 
-    // print it out using different number bases
-    log.info("The string is:\n" + string + "\n");
-    log.info("Its bytes in base 2 are: " + Base02Utils.encode(bytes, pad) + "\n");
-    log.info("Its bytes in base 16 are: " + Base16Utils.encode(bytes, pad) + "\n");
-    log.info("Its bytes in base 32 are: " + Base32Utils.encode(bytes, pad) + "\n");
-    log.info("Its bytes in base 64 are: " + Base64Utils.encode(bytes, pad) + "\n");
+    // Print it out using different number bases
+    log.info("The string is:\n{}\n", string);
+    log.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, pad));
+    log.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, pad));
+    log.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, pad));
+    log.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, pad));
 ```
 
 It will generate the following output:
