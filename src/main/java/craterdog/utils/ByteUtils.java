@@ -641,7 +641,7 @@ public final class ByteUtils {
      * This function creates a copy of a byte array.
      *
      * @param bytes The byte array.
-     * @return
+     * @return A copy of the byte array.
      */
     static public byte[] copy(byte[] bytes) {
         byte[] result = Arrays.copyOf(bytes, bytes.length);
