@@ -12,7 +12,7 @@ To get started using these utilities, include the following dependency in your m
     <dependency>
         <groupId>com.craterdog</groupId>
         <artifactId>java-general-utilities</artifactId>
-        <version>3.0</version>
+        <version>3.3</version>
     </dependency>
 ```
 
