@@ -19,7 +19,7 @@ package craterdog.utils;
 public final class Base16Utils {
 
     /**
-     * This function encodes a byte array using base 16 with no padding of new lines.
+     * This function encodes a byte array using base 16 with no indentation of new lines.
      *
      * @param bytes The byte array to be encoded.
      * @return The base 16 encoded string.
@@ -30,20 +30,20 @@ public final class Base16Utils {
 
 
     /**
-     * This function encodes a byte array using base 16 with a specific padding of new lines.
+     * This function encodes a byte array using base 16 with a specific indentation of new lines.
      *
      * @param bytes The byte array to be encoded.
-     * @param pad The padding of spaces to be inserted before each new line.
+     * @param indentation The indentation string to be inserted before each new line.
      * @return The base 16 encoded string.
      */
-    static public String encode(byte[] bytes, String pad) {
+    static public String encode(byte[] bytes, String indentation) {
         StringBuilder result = new StringBuilder();
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
         for (int i = 0; i < length; i++) {
-            if (length > 40 && i % 40 == 0) {  // format to padded 80 character blocks
+            if (length > 40 && i % 40 == 0) {  // format to indented 80 character blocks
                 result.append("\n");
-                result.append(pad);
+                result.append(indentation);
             }
             int nibble = (bytes[i] & 0xF0) >>> 4;
             result.append(lookupTable.charAt(nibble));

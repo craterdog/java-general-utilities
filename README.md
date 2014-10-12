@@ -93,14 +93,14 @@ The following example code demonstrates some of the utility methods:
     "    And looked down one as far as I could\n" +
     "    To where it bent in the undergrowth;\"";
     bytes = ByteUtils.stringToBytes(string);
-    String pad = "    ";
+    String indentation = "    ";
 
     // Print it out using different number bases
     log.info("The string is:\n{}\n", string);
-    log.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, pad));
-    log.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, pad));
-    log.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, pad));
-    log.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, pad));
+    log.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, indentation));
+    log.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, indentation));
+    log.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, indentation));
+    log.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, indentation));
 ```
 
 It will generate the following output:

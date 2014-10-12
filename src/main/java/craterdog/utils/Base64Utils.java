@@ -22,7 +22,7 @@ import org.apache.commons.codec.binary.Base64;
 public class Base64Utils {
 
     /**
-     * This function encodes a byte array using base 64 with no padding of new lines.
+     * This function encodes a byte array using base 64 with no indentation of new lines.
      *
      * @param bytes The byte array to be encoded.
      * @return The base 64 encoded string.
@@ -33,20 +33,20 @@ public class Base64Utils {
 
 
     /**
-     * This function encodes a byte array using base 64 with a specific padding of new lines.
+     * This function encodes a byte array using base 64 with a specific indentation of new lines.
      *
      * @param bytes The byte array to be encoded.
-     * @param pad The padding of spaces to be inserted before each new line.
+     * @param indentation The indentation string to be inserted before each new line.
      * @return The base 64 encoded string.
      */
-    public static String encode(byte[] bytes, String pad) {
+    public static String encode(byte[] bytes, String indentation) {
         String encoded = Base64.encodeBase64String(bytes).replaceAll("\\s", "");  // remove all white space
         StringBuilder result = new StringBuilder();
         if (encoded.length() > 80) {
             for (int c = 0; c < encoded.length(); c++) {
                 if (c % 80 == 0) {
                     result.append("\n");
-                    result.append(pad);
+                    result.append(indentation);
                 }
                 result.append(encoded.charAt(c));
             }

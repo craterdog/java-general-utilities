@@ -19,7 +19,7 @@ package craterdog.utils;
 public final class Base32Utils {
 
     /**
-     * This function encodes a byte array using base 32 with no padding of new lines.
+     * This function encodes a byte array using base 32 with no indentation of new lines.
      *
      * @param bytes The byte array to be encoded.
      * @return The base 32 encoded string.
@@ -30,25 +30,25 @@ public final class Base32Utils {
 
 
     /**
-     * This function encodes a byte array using base 32 with a specific padding of new lines.
+     * This function encodes a byte array using base 32 with a specific indentation of new lines.
      *
      * @param bytes The byte array to be encoded.
-     * @param pad The padding of spaces to be inserted before each new line.
+     * @param indentation The indentation string to be inserted before each new line.
      * @return The base 32 encoded string.
      */
-    static public String encode(byte[] bytes, String pad) {
+    static public String encode(byte[] bytes, String indentation) {
         StringBuilder result = new StringBuilder();
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
         if (length > 50) {
             result.append("\n");
-            result.append(pad);
+            result.append(indentation);
         }
         encodeBytes(bytes[0], bytes[0], 0, result);
         for (int i = 1; i < length; i++) {
-            if (i % 50 == 0) {  // format to padded 80 character blocks
+            if (i % 50 == 0) {  // format to indented 80 character blocks
                 result.append("\n");
-                result.append(pad);
+                result.append(indentation);
             }
             encodeBytes(bytes[i - 1], bytes[i], i, result);
         }
