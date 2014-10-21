@@ -1,11 +1,30 @@
-#Java General Utilities
+# Java General Utilities
 
-This project contains a set of useful Java utility classes. The classes focus on the following areas:
+## The Gist of It
+This project contains a set of useful Java general utility classes. The classes focus on the following areas:
 
  * number base conversions (bases 2, 16, 32, and 64)
  * primitive type to byte array conversions
- * cryptographically secure random number generation
+ * cryptographically secure random number generation for specific purposes
 
+## Highlighted Components
+The following highlights the utility classes provided by this project:
+
+ * *Base02Utils* - converts between byte arrays and base 2 strings
+ * *Base16Utils* - converts between byte arrays and base 16 strings
+ * *Base32Utils* - converts between byte arrays and base 32 strings
+ * *Base64Utils* - converts between byte arrays and base 64 strings
+ * *ByteUtils* - converts between byte arrays and primitive types
+ * *RandomUtils* - generates random array indexes, probabilities, and byte arrays
+
+## Quick Links
+For more detail on this project click on the following links:
+
+ * [javadocs](http://craterdog.github.io/java-general-utilities/3.3/index.html)
+ * [wiki](https://github.com/craterdog/java-general-utilities/wiki/Crater-Dog-Technologies%E2%84%A2-Java-General-Utilities)
+ * [website](http://craterdog.com)
+
+## Getting Started
 To get started using these utilities, include the following dependency in your maven pom.xml file:
 
 ```xml
@@ -16,20 +35,24 @@ To get started using these utilities, include the following dependency in your m
     </dependency>
 ```
 
-##Base 2 Conversions
+The source code, javadocs and jar file artifacts for this project are available from the
+*Maven Central Repository*. If your project doesn't currently use maven and you would like to,
+click [here](https://github.com/craterdog/maven-parent-poms) to get started down that path quickly.
+
+## Base 2 Conversions
 The Base02Utils class provides static methods for encoding byte arrays into base 2 strings and decoding base 2 strings containing arbitrary white space into their corresponding byte array. All encoded strings are formatted into 80 character lines, each prepended with an arbitrary amount of white space. For example, a random 20 byte array might have the following base 2 output:
 
         00100001011100100100011000011010111100001000010111110010100110110010101000110101
         01000011101101110010000010001000010110000011110111001101000010001011100011010011
 
-##Base 16 Conversions
+## Base 16 Conversions
 Similarly, the Base16Utils class provides static methods for encoding byte arrays into base 16 strings and decoding base 16 strings containing arbitrary white space into their corresponding byte array. All encoded strings are formatted into 80 character lines, each prepended with an arbitrary amount of white space. For example, a random 120 byte array might have the following base 16 output:
 
         E9EAEAF429E9C27C42D637EB438EDF65CB53FACBC659CAA19655CB7115CF9ED520131598527B03C6
         90B14E975D733EA042751755C686DF0081C6F26C57E43E905D1CCD96ACEFFD1CE437867B53FE31DC
         89202ADD79F5393BD2882ADEE2B86FC99629C152C4E3F1B111CDF34FFBF6A7E529CA612265B91832
 
-##Base 32 Conversions
+## Base 32 Conversions
 Similarly, the Base32Utils class provides static methods for encoding byte arrays into base 32 ('0'..'9', 'A'..'D', 'F'..'H', 'J'..'N', 'P'..'T', 'V'..'Z') strings and decoding base 32 strings containing arbitrary white space into their corresponding byte array. All encoded strings are formatted into 80 character lines, each prepended with an arbitrary amount of white space. For example, a random 200 byte array might have the following base 32 output:
 
         3S6CGCCVGVRS30AY24SS04NWLZF688VB1W9X79Q5YVMXTT01BMHDSLV94XK9BQC6AM4J6CFFNNAT42GD
@@ -39,7 +62,7 @@ Similarly, the Base32Utils class provides static methods for encoding byte array
 
 Note, this base 32 character encoding eliminates the vowels 'E', 'I', 'O', and 'U' to avoid confusion with '1' and '0' and to avoid spelling (possibly offensive) words.
 
-##Base 64 Conversions
+## Base 64 Conversions
 And finally, the Base64Utils class provides static methods for encoding byte arrays into standard base 64 ('0'..'9', 'a'..'z', 'A'..'Z', '+', '/') strings and decoding base 64 strings containing arbitrary white space into their corresponding byte array. All encoded strings are formatted into 80 character lines, each prepended with an arbitrary amount of white space. For example, a random 360 byte array might have the following base 64 output:
 
         SZm6+QD0gVl21T9ocqqIjL5lTE38pmU6Zm06rzMG5fJIxSemYoPUtSgKf1FVqD3WD4aWhfgHpn2aSYmI
@@ -49,7 +72,7 @@ And finally, the Base64Utils class provides static methods for encoding byte arr
         MtMZR78FNMYy9JxMfwBkwHtQXoNnF/VLA5eOR+K6o2QOnqReU1cIz72KtPlmMxF5W0Z6mW2w52EuGkzQ
         Xms9xGP6atYs7NzVI5SZ57oZFskYwt7hTrGQa5ffiD/brQGcIc06svEUSRsMa3V8N78icFsyV3IxaSFH
 
-##Primitive Type to Byte Array Conversions
+## Primitive Type to Byte Array Conversions
 The java.lang.reflect.Array class provides nice methods for storing Java primitive types into a byte array and reading them back out.  But the methods are not as flexible as they might be and they don't handle non-primitive types like String, BigInteger, and BigDecimal. The ByteUtils class addresses some of these short-comings and provides a consistent interface for all types. This class handles the following type conversions to an from byte arrays:
 
  * boolean
@@ -61,7 +84,7 @@ The java.lang.reflect.Array class provides nice methods for storing Java primiti
  * BigDecimal
  * String
 
-##Random Number Generation Utilities
+## Random Number Generation Utilities
 The RandomUtils class provides some simple static methods that generate cryptographically secure random numbers for specific purposes. The following types of random numbers can be generated:
 
  * a random integer (int)
@@ -70,7 +93,7 @@ The RandomUtils class provides some simple static methods that generate cryptogr
  * a random gaussian with mean of 0.0 and standard deviation of 1.0
  * a byte array initialized with random byte values
 
-##Example Code
+## Example Code
 The following example code demonstrates some of the utility methods:
 
 ```java
