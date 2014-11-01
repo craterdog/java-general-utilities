@@ -42,6 +42,11 @@ public class ExamplesTest {
         log.info("Completed Tag Unit Tests.\n");
     }
 
+    @Test
+    public void genRandom() {
+        log.info("RANDOM: {}", RandomUtils.pickRandomInt());
+    }
+
     /**
      * This method tests the various utility class examples.
      */

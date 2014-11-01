@@ -1,6 +1,6 @@
 # Java General Utilities
 
-## The Gist
+## In a Nut Shell
 This project contains a set of useful Java general utility classes. The classes focus on the following areas:
 
  * number base conversions (bases 2, 16, 32, and 64)
@@ -21,7 +21,7 @@ The following highlights the utility classes provided by this project:
 For more detail on this project click on the following links:
 
  * [javadocs](http://craterdog.github.io/java-general-utilities/3.3/index.html)
- * [wiki](https://github.com/craterdog/java-general-utilities/wiki/Crater-Dog-Technologies%E2%84%A2-Java-General-Utilities)
+ * [wiki](https://github.com/craterdog/java-general-utilities/wiki)
  * [website](http://craterdog.com)
 
 ## Getting Started
