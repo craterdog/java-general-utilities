@@ -22,6 +22,7 @@ For more detail on this project click on the following links:
 
  * [javadocs](http://craterdog.github.io/java-general-utilities/3.3/index.html)
  * [wiki](https://github.com/craterdog/java-general-utilities/wiki)
+ * [release notes](https://github.com/craterdog/java-general-utilities/wiki#Release-Notes)
  * [website](http://craterdog.com)
 
 ## Getting Started
