@@ -1,4 +1,4 @@
-![Java General Utilities](https://github.com/craterdog/java-general-utilities/blob/master/docs/images/Toolbox.jpg)
+![Java General Utilities](https://github.com/craterdog/java-general-utilities/blob/master/docs/images/Toolkit.jpg)
 
 ## General Java Utilities
 This project contains a set of useful Java general utility classes. The classes focus on the following areas:
