@@ -19,13 +19,13 @@ import org.slf4j.ext.XLoggerFactory;
 
 
 /**
- * This class defines and validates the example code shown in the README.md file.
+ * This class performs unit tests on the <code>NaturalComparator</code> class.
  *
  * @author Derk Norton
  */
-public class ExamplesTest {
+public class NaturalComparatorTest {
 
-    static private final XLogger logger = XLoggerFactory.getXLogger(ExamplesTest.class);
+    static private final XLogger logger = XLoggerFactory.getXLogger(NaturalComparatorTest.class);
 
 
     /**
@@ -33,99 +33,69 @@ public class ExamplesTest {
      */
     @BeforeClass
     public static void setUpClass() {
-        logger.info("Running Tag Unit Tests...\n");
+        logger.info("Running NaturalComparator Unit Tests...\n");
     }
-
 
     /**
      * Log a message at the end of the tests.
      */
     @AfterClass
     public static void tearDownClass() {
-        logger.info("Completed Tag Unit Tests.\n");
+        logger.info("Completed NaturalComparator Unit Tests.\n");
     }
 
-
     /**
-     * This method tests the various utility class examples.
+     * This method tests the natural comparator on primitive values.
      */
     @Test
-    public void testUtilsClassesExamples() {
-        logger.info("Beginning testUtilsClassesExamples()...");
+    public void testPrimitiveValues() {
+        logger.info("Beginning testPrimitiveValues()...");
 
-        // Generate a random integer
-        int integer = RandomUtils.pickRandomInt();
-        byte[] bytes = ByteUtils.intToBytes(integer);
-
-        // Print it out using different number bases
-        logger.info("The random integer is: {}\n", integer);
-        logger.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes));
-        logger.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes));
-        logger.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes));
-        logger.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes));
-
-        // Define a string
-        String string =
-        "    \"Two roads diverged in a yellow wood,\n" +
-        "    And sorry I could not travel both\n" +
-        "    And be one traveler, long I stood\n" +
-        "    And looked down one as far as I could\n" +
-        "    To where it bent in the undergrowth;\"";
-        bytes = ByteUtils.stringToBytes(string);
-        String indentation = "    ";
-
-        // Print it out using different number bases
-        logger.info("The string is:\n{}\n", string);
-        logger.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, indentation));
-        logger.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, indentation));
-        logger.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, indentation));
-        logger.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, indentation));
-
-        logger.info("Completed testUtilsClassesExamples().\n");
-    }
-
-
-    /**
-     * This method tests the natural comparator examples.
-     */
-    @Test
-    public void testNaturalComparatorExamples() {
-        logger.info("Beginning testNaturalComparatorExamples()...");
-
-        // Compare two booleans
+        // test a boolean
         boolean firstBoolean = true;
         boolean secondBoolean = false;
         logger.info("{} is greater than {}.", firstBoolean, secondBoolean);
         Comparator<Boolean> booleanComparator = new NaturalComparator<>();
         assert booleanComparator.compare(firstBoolean, secondBoolean) > 0;
 
-        // Compare two characters
+        // test a char
         char firstCharacter = 'b';
         char secondCharacter = 'a';
         logger.info("'{}' is greater than '{}'.", firstCharacter, secondCharacter);
         Comparator<Character> characterComparator = new NaturalComparator<>();
         assert characterComparator.compare(firstCharacter, secondCharacter) > 0;
 
-        // Compare two numbers
+        // test a number
         double firstNumber = Math.PI;
         double secondNumber = Math.E;
         logger.info("{} is greater than {}.", firstNumber, secondNumber);
         Comparator<Number> numberComparator = new NaturalComparator<>();
         assert numberComparator.compare(firstNumber, secondNumber) > 0;
 
-        // Compare two dates
+        // test a date
         Date firstDate = new Date(987654321);
         Date secondDate = new Date(123456789);
         logger.info("{} is greater than {}.", firstDate, secondDate);
         Comparator<Date> dateComparator = new NaturalComparator<>();
         assert dateComparator.compare(firstDate, secondDate) > 0;
 
-        // Compare two strings
+        // test a string
         String firstString = "This is a string...";
         String secondString = "And this is another string...";
         logger.info("\"{}\" is greater than \"{}\".", firstString, secondString);
         Comparator<String> stringComparator = new NaturalComparator<>();
         assert stringComparator.compare(firstString, secondString) > 0;
+
+        logger.info("Completed testPrimitiveValues().\n");
+    }
+
+
+    /**
+     * This method tests the natural comparator on arrays.
+     */
+    @Test
+    public void testArrays() {
+        logger.info("Beginning testArrays()...");
 
         Comparator<Integer[]> arrayComparator = new NaturalComparator<>();
         Integer[] array0 = { };
@@ -133,11 +103,15 @@ public class ExamplesTest {
         Integer[] array2 = {0, 1, 1, 2, 3, 5, 8, 13, 21};
         Integer[] array3 = {1, 1, 2, 3, 5, 8};
 
-        // Compare various arrays
+        // test empty arrays
         logger.info("{} is equal to {}.", array0, array0);
         assert arrayComparator.compare(array0, array0) == 0;
         logger.info("{} is less than {}.", array0, array1);
         assert arrayComparator.compare(array0, array1) < 0;
+        logger.info("{} is greater than {}.", array1, array0);
+        assert arrayComparator.compare(array1, array0) > 0;
+
+        // test non-empty arrays
         logger.info("{} is equal to {}.", array1, array1);
         assert arrayComparator.compare(array1, array1) == 0;
         logger.info("{} is greater than {}.", array1, array2);
@@ -145,7 +119,7 @@ public class ExamplesTest {
         logger.info("{} is greater than {}.", array1, array3);
         assert arrayComparator.compare(array1, array3) > 0;
 
-        logger.info("Completed testNaturalComparatorExamples().\n");
+        logger.info("Completed testArrays().\n");
     }
 
 }
