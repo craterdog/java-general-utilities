@@ -148,4 +148,41 @@ public class ExamplesTest {
         logger.info("Completed testNaturalComparatorExamples().\n");
     }
 
+
+    /**
+     * This method tests the random utilities examples.
+     */
+    @Test
+    public void testRandomUtilsExamples() {
+        logger.info("Beginning testRandomUtilsExamples()...");
+
+        // Create a new random universal hash function with hash width of 32 bits
+        UniversalHashFunction function = new UniversalHashFunction();
+        String string = "This is a string that needs hashing...";
+        int hashValue = function.hashValue(string);
+        logger.info("The 32 bit hash value of \"{}\" is {}.", string, Integer.toBinaryString(hashValue));
+
+        // Create a new random universal hash function with hash width of 13 bits
+        function = new UniversalHashFunction(13);
+        double pi = Math.PI;
+        hashValue = function.hashValue(pi);
+        assert Integer.highestOneBit(hashValue) >> 13 == 0;
+        logger.info("The 13 bit hash value of {} is {}.", pi, Integer.toBinaryString(hashValue));
+
+        // Create a new random universal hash function with hash width of 8 bits
+        function = new UniversalHashFunction(8);
+        Date date = new Date();
+        hashValue = function.hashValue(date);
+        assert Integer.highestOneBit(hashValue) >> 8 == 0;
+        logger.info("The 8 bit hash value of {} is {}.", date, Integer.toBinaryString(hashValue));
+
+        // Create a list of random hash values for sequential integers
+        function = new UniversalHashFunction(6);
+        for (int i = 0; i < 16; i++) {
+            hashValue = function.hashValue(i);
+            logger.info("The 6 bit hash value of {} is {}.", i, Integer.toBinaryString(hashValue));
+        }
+        logger.info("Completed testRandomUtilsExamples().\n");
+    }
+
 }

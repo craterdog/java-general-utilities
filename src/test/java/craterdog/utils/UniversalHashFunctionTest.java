@@ -50,24 +50,24 @@ public class UniversalHashFunctionTest {
     public void testRandomHashFunctions() {
         logger.info("Beginning testRandomHashFunctions()...");
 
-        // test a new random universal hash function with hash width of 32 bits
+        // Test a new random universal hash function with hash width of 32 bits
         UniversalHashFunction function = new UniversalHashFunction();
         String string = "This is a string that needs hashing...";
         int hashValue = function.hashValue(string);
-        logger.info("The 32 bit hash value of \"{}\" is {}", string, Integer.toBinaryString(hashValue));
+        logger.info("The 32 bit hash value of \"{}\" is {}.", string, Integer.toBinaryString(hashValue));
 
-        // test a new random universal hash function with hash width of 8 bits
+        // Test a new random universal hash function with hash width of 8 bits
         function = new UniversalHashFunction(8);
         double pi = Math.PI;
         hashValue = function.hashValue(pi);
         assert Integer.highestOneBit(hashValue) >> 8 == 0;
-        logger.info("The 8 bit hash value of {} is {}", pi, Integer.toBinaryString(hashValue));
+        logger.info("The 8 bit hash value of {} is {}.", pi, Integer.toBinaryString(hashValue));
 
-        // test a new random universal hash function with hash width of zero bits (corner case)
+        // Test a new random universal hash function with hash width of zero bits (corner case)
         function = new UniversalHashFunction(0);
         Date date = new Date();
         hashValue = function.hashValue(date);
-        logger.info("The 0 bit hash value of {} is {}", date, Integer.toBinaryString(hashValue));
+        logger.info("The 0 bit hash value of {} is {}.", date, Integer.toBinaryString(hashValue));
 
         logger.info("Completed testRandomHashFunctions().\n");
     }
