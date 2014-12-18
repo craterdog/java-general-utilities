@@ -25,7 +25,7 @@ public final class Base32Utils {
      * @return The base 32 encoded string.
      */
     static public String encode(byte[] bytes) {
-        return encode(bytes, "");
+        return encode(bytes, null);
     }
 
 
@@ -40,13 +40,14 @@ public final class Base32Utils {
         StringBuilder result = new StringBuilder();
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
-        if (length > 50) {
+        if (indentation != null && length > 50) {
             result.append("\n");
             result.append(indentation);
         }
         encodeBytes(bytes[0], bytes[0], 0, result);
         for (int i = 1; i < length; i++) {
-            if (i % 50 == 0) {  // format to indented 80 character blocks
+            if (indentation != null && i % 50 == 0) {
+                // format to indented 80 character blocks
                 result.append("\n");
                 result.append(indentation);
             }

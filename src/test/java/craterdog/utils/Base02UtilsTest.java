@@ -158,7 +158,7 @@ public class Base02UtilsTest {
         logger.info("Beginning testWrapping()...");
 
         byte[] bytes = RandomUtils.generateRandomBytes(10);
-        String encoded = Base02Utils.encode(bytes, "    ");
+        String encoded = Base02Utils.encode(bytes);
         logger.info("  With no wrapping: " + encoded);
 
         bytes = RandomUtils.generateRandomBytes(120);

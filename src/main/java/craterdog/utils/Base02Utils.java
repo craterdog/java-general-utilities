@@ -25,7 +25,7 @@ public final class Base02Utils {
      * @return The base 2 encoded string.
      */
     static public String encode(byte[] bytes) {
-        return encode(bytes, "");
+        return encode(bytes, null);
     }
 
 
@@ -41,7 +41,8 @@ public final class Base02Utils {
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
         for (int i = 0; i < length; i++) {
-            if (length > 10 && i % 10 == 0) {  // format to indented 80 character blocks
+            if (indentation != null && length > 10 && i % 10 == 0) {
+                // format to indented 80 character blocks
                 result.append("\n");
                 result.append(indentation);
             }

@@ -28,7 +28,7 @@ public class Base64Utils {
      * @return The base 64 encoded string.
      */
     static public String encode(byte[] bytes) {
-        return encode(bytes, "");
+        return encode(bytes, null);
     }
 
 
@@ -44,7 +44,8 @@ public class Base64Utils {
         StringBuilder result = new StringBuilder();
         if (encoded.length() > 80) {
             for (int c = 0; c < encoded.length(); c++) {
-                if (c % 80 == 0) {
+                if (indentation != null && c % 80 == 0) {
+                    // format to indented 80 character blocks
                     result.append("\n");
                     result.append(indentation);
                 }

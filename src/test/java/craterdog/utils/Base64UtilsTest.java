@@ -157,7 +157,7 @@ public class Base64UtilsTest {
         logger.info("Beginning testWrapping()...");
 
         byte[] bytes = RandomUtils.generateRandomBytes(60);
-        String encoded = Base64Utils.encode(bytes, "    ");
+        String encoded = Base64Utils.encode(bytes);
         logger.info("  With no wrapping: " + encoded);
 
         bytes = RandomUtils.generateRandomBytes(360);
