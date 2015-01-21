@@ -19,6 +19,9 @@ import java.security.SecureRandom;
  */
 public class RandomUtils {
 
+    static public final SecureRandom generator = new SecureRandom();
+
+
     /**
      * This utility method returns a randomly generated integer value.
      *
@@ -81,8 +84,5 @@ public class RandomUtils {
     private RandomUtils() {
         // should never be called
     }
-
-
-    static private final SecureRandom generator = new SecureRandom();
 
 }
