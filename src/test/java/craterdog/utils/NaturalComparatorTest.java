@@ -54,35 +54,35 @@ public class NaturalComparatorTest {
         // test a boolean
         boolean firstBoolean = true;
         boolean secondBoolean = false;
-        logger.info("{} is greater than {}.", firstBoolean, secondBoolean);
+        logger.info("  {} is greater than {}.", firstBoolean, secondBoolean);
         Comparator<Boolean> booleanComparator = new NaturalComparator<>();
         assert booleanComparator.compare(firstBoolean, secondBoolean) > 0;
 
         // test a char
         char firstCharacter = 'b';
         char secondCharacter = 'a';
-        logger.info("'{}' is greater than '{}'.", firstCharacter, secondCharacter);
+        logger.info("  '{}' is greater than '{}'.", firstCharacter, secondCharacter);
         Comparator<Character> characterComparator = new NaturalComparator<>();
         assert characterComparator.compare(firstCharacter, secondCharacter) > 0;
 
         // test a number
         double firstNumber = Math.PI;
         double secondNumber = Math.E;
-        logger.info("{} is greater than {}.", firstNumber, secondNumber);
+        logger.info("  {} is greater than {}.", firstNumber, secondNumber);
         Comparator<Number> numberComparator = new NaturalComparator<>();
         assert numberComparator.compare(firstNumber, secondNumber) > 0;
 
         // test a date
         Date firstDate = new Date(987654321);
         Date secondDate = new Date(123456789);
-        logger.info("{} is greater than {}.", firstDate, secondDate);
+        logger.info("  {} is greater than {}.", firstDate, secondDate);
         Comparator<Date> dateComparator = new NaturalComparator<>();
         assert dateComparator.compare(firstDate, secondDate) > 0;
 
         // test a string
         String firstString = "This is a string...";
         String secondString = "And this is another string...";
-        logger.info("\"{}\" is greater than \"{}\".", firstString, secondString);
+        logger.info("  \"{}\" is greater than \"{}\".", firstString, secondString);
         Comparator<String> stringComparator = new NaturalComparator<>();
         assert stringComparator.compare(firstString, secondString) > 0;
 
@@ -104,19 +104,19 @@ public class NaturalComparatorTest {
         Integer[] array3 = {1, 1, 2, 3, 5, 8};
 
         // test empty arrays
-        logger.info("{} is equal to {}.", array0, array0);
+        logger.info("  {} is equal to {}.", array0, array0);
         assert arrayComparator.compare(array0, array0) == 0;
-        logger.info("{} is less than {}.", array0, array1);
+        logger.info("  {} is less than {}.", array0, array1);
         assert arrayComparator.compare(array0, array1) < 0;
-        logger.info("{} is greater than {}.", array1, array0);
+        logger.info("  {} is greater than {}.", array1, array0);
         assert arrayComparator.compare(array1, array0) > 0;
 
         // test non-empty arrays
-        logger.info("{} is equal to {}.", array1, array1);
+        logger.info("  {} is equal to {}.", array1, array1);
         assert arrayComparator.compare(array1, array1) == 0;
-        logger.info("{} is greater than {}.", array1, array2);
+        logger.info("  {} is greater than {}.", array1, array2);
         assert arrayComparator.compare(array1, array2) > 0;
-        logger.info("{} is greater than {}.", array1, array3);
+        logger.info("  {} is greater than {}.", array1, array3);
         assert arrayComparator.compare(array1, array3) > 0;
 
         logger.info("Completed testArrays().\n");

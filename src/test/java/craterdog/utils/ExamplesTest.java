@@ -58,11 +58,11 @@ public class ExamplesTest {
         byte[] bytes = ByteUtils.intToBytes(integer);
 
         // Print it out using different number bases
-        logger.info("The random integer is: {}\n", integer);
-        logger.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes));
-        logger.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes));
-        logger.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes));
-        logger.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes));
+        logger.info("  The random integer is: {}\n", integer);
+        logger.info("  Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes));
+        logger.info("  Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes));
+        logger.info("  Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes));
+        logger.info("  Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes));
 
         // Define a string
         String string =
@@ -75,11 +75,11 @@ public class ExamplesTest {
         String indentation = "    ";
 
         // Print it out using different number bases
-        logger.info("The string is:\n{}\n", string);
-        logger.info("Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, indentation));
-        logger.info("Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, indentation));
-        logger.info("Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, indentation));
-        logger.info("Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, indentation));
+        logger.info("  The string is:\n{}\n", string);
+        logger.info("  Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, indentation));
 
         logger.info("Completed testUtilsClassesExamples().\n");
     }
@@ -95,35 +95,35 @@ public class ExamplesTest {
         // Compare two booleans
         boolean firstBoolean = true;
         boolean secondBoolean = false;
-        logger.info("{} is greater than {}.", firstBoolean, secondBoolean);
+        logger.info("  {} is greater than {}.", firstBoolean, secondBoolean);
         Comparator<Boolean> booleanComparator = new NaturalComparator<>();
         assert booleanComparator.compare(firstBoolean, secondBoolean) > 0;
 
         // Compare two characters
         char firstCharacter = 'b';
         char secondCharacter = 'a';
-        logger.info("'{}' is greater than '{}'.", firstCharacter, secondCharacter);
+        logger.info("  '{}' is greater than '{}'.", firstCharacter, secondCharacter);
         Comparator<Character> characterComparator = new NaturalComparator<>();
         assert characterComparator.compare(firstCharacter, secondCharacter) > 0;
 
         // Compare two numbers
         double firstNumber = Math.PI;
         double secondNumber = Math.E;
-        logger.info("{} is greater than {}.", firstNumber, secondNumber);
+        logger.info("  {} is greater than {}.", firstNumber, secondNumber);
         Comparator<Number> numberComparator = new NaturalComparator<>();
         assert numberComparator.compare(firstNumber, secondNumber) > 0;
 
         // Compare two dates
         Date firstDate = new Date(987654321);
         Date secondDate = new Date(123456789);
-        logger.info("{} is greater than {}.", firstDate, secondDate);
+        logger.info("  {} is greater than {}.", firstDate, secondDate);
         Comparator<Date> dateComparator = new NaturalComparator<>();
         assert dateComparator.compare(firstDate, secondDate) > 0;
 
         // Compare two strings
         String firstString = "This is a string...";
         String secondString = "And this is another string...";
-        logger.info("\"{}\" is greater than \"{}\".", firstString, secondString);
+        logger.info("  \"{}\" is greater than \"{}\".", firstString, secondString);
         Comparator<String> stringComparator = new NaturalComparator<>();
         assert stringComparator.compare(firstString, secondString) > 0;
 
@@ -134,15 +134,15 @@ public class ExamplesTest {
         Integer[] array3 = {1, 1, 2, 3, 5, 8};
 
         // Compare various arrays
-        logger.info("{} is equal to {}.", array0, array0);
+        logger.info("  {} is equal to {}.", array0, array0);
         assert arrayComparator.compare(array0, array0) == 0;
-        logger.info("{} is less than {}.", array0, array1);
+        logger.info("  {} is less than {}.", array0, array1);
         assert arrayComparator.compare(array0, array1) < 0;
-        logger.info("{} is equal to {}.", array1, array1);
+        logger.info("  {} is equal to {}.", array1, array1);
         assert arrayComparator.compare(array1, array1) == 0;
-        logger.info("{} is greater than {}.", array1, array2);
+        logger.info("  {} is greater than {}.", array1, array2);
         assert arrayComparator.compare(array1, array2) > 0;
-        logger.info("{} is greater than {}.", array1, array3);
+        logger.info("  {} is greater than {}.", array1, array3);
         assert arrayComparator.compare(array1, array3) > 0;
 
         logger.info("Completed testNaturalComparatorExamples().\n");
@@ -160,27 +160,27 @@ public class ExamplesTest {
         UniversalHashFunction function = new UniversalHashFunction();
         String string = "This is a string that needs hashing...";
         int hashValue = function.hashValue(string);
-        logger.info("The 32 bit hash value of \"{}\" is {}.", string, Integer.toBinaryString(hashValue));
+        logger.info("  The 32 bit hash value of \"{}\" is {}.", string, Integer.toBinaryString(hashValue));
 
         // Create a new random universal hash function with hash width of 13 bits
         function = new UniversalHashFunction(13);
         double pi = Math.PI;
         hashValue = function.hashValue(pi);
         assert Integer.highestOneBit(hashValue) >> 13 == 0;
-        logger.info("The 13 bit hash value of {} is {}.", pi, Integer.toBinaryString(hashValue));
+        logger.info("  The 13 bit hash value of {} is {}.", pi, Integer.toBinaryString(hashValue));
 
         // Create a new random universal hash function with hash width of 8 bits
         function = new UniversalHashFunction(8);
         Date date = new Date();
         hashValue = function.hashValue(date);
         assert Integer.highestOneBit(hashValue) >> 8 == 0;
-        logger.info("The 8 bit hash value of {} is {}.", date, Integer.toBinaryString(hashValue));
+        logger.info("  The 8 bit hash value of {} is {}.", date, Integer.toBinaryString(hashValue));
 
         // Create a list of random hash values for sequential integers
         function = new UniversalHashFunction(6);
         for (int i = 0; i < 16; i++) {
             hashValue = function.hashValue(i);
-            logger.info("The 6 bit hash value of {} is {}.", i, Integer.toBinaryString(hashValue));
+            logger.info("  The 6 bit hash value of {} is {}.", i, Integer.toBinaryString(hashValue));
         }
         logger.info("Completed testRandomUtilsExamples().\n");
     }

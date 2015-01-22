@@ -54,20 +54,20 @@ public class UniversalHashFunctionTest {
         UniversalHashFunction function = new UniversalHashFunction();
         String string = "This is a string that needs hashing...";
         int hashValue = function.hashValue(string);
-        logger.info("The 32 bit hash value of \"{}\" is {}.", string, Integer.toBinaryString(hashValue));
+        logger.info("  The 32 bit hash value of \"{}\" is {}.", string, Integer.toBinaryString(hashValue));
 
         // Test a new random universal hash function with hash width of 8 bits
         function = new UniversalHashFunction(8);
         double pi = Math.PI;
         hashValue = function.hashValue(pi);
         assert Integer.highestOneBit(hashValue) >> 8 == 0;
-        logger.info("The 8 bit hash value of {} is {}.", pi, Integer.toBinaryString(hashValue));
+        logger.info("  The 8 bit hash value of {} is {}.", pi, Integer.toBinaryString(hashValue));
 
         // Test a new random universal hash function with hash width of zero bits (corner case)
         function = new UniversalHashFunction(0);
         Date date = new Date();
         hashValue = function.hashValue(date);
-        logger.info("The 0 bit hash value of {} is {}.", date, Integer.toBinaryString(hashValue));
+        logger.info("  The 0 bit hash value of {} is {}.", date, Integer.toBinaryString(hashValue));
 
         logger.info("Completed testRandomHashFunctions().\n");
     }
@@ -92,14 +92,14 @@ public class UniversalHashFunctionTest {
             int hashValue = function.hashValue(true);
             assert Integer.highestOneBit(hashValue) >> 19 == 0;
             int expectedValue = 476481;
-            logger.info("The 19 bit hash value of {} is {}", true, Integer.toBinaryString(hashValue));
+            logger.info("  The 19 bit hash value of {} is {}", true, Integer.toBinaryString(hashValue));
             assert hashValue == expectedValue;
 
             // test a char
             hashValue = function.hashValue('g');
             assert Integer.highestOneBit(hashValue) >> 19 == 0;
             expectedValue = 133567;
-            logger.info("The 19 bit hash value of {} is {}", 'g', Integer.toBinaryString(hashValue));
+            logger.info("  The 19 bit hash value of {} is {}", 'g', Integer.toBinaryString(hashValue));
             assert hashValue == expectedValue;
 
             // test a number
@@ -107,7 +107,7 @@ public class UniversalHashFunctionTest {
             hashValue = function.hashValue(number);
             assert Integer.highestOneBit(hashValue) >> 19 == 0;
             expectedValue = 289298;
-            logger.info("The 19 bit hash value of {} is {}", number, Integer.toBinaryString(hashValue));
+            logger.info("  The 19 bit hash value of {} is {}", number, Integer.toBinaryString(hashValue));
             assert hashValue == expectedValue;
 
             // test a date
@@ -115,7 +115,7 @@ public class UniversalHashFunctionTest {
             hashValue = function.hashValue(date);
             assert Integer.highestOneBit(hashValue) >> 19 == 0;
             expectedValue = 349727;
-            logger.info("The 19 bit hash value of {} is {}", date, Integer.toBinaryString(hashValue));
+            logger.info("  The 19 bit hash value of {} is {}", date, Integer.toBinaryString(hashValue));
             assert hashValue == expectedValue;
 
             // test a string
@@ -123,7 +123,7 @@ public class UniversalHashFunctionTest {
             hashValue = function.hashValue(string);
             assert Integer.highestOneBit(hashValue) >> 19 == 0;
             expectedValue = 407412;
-            logger.info("The 19 bit hash value of \"{}\" is {}", string, Integer.toBinaryString(hashValue));
+            logger.info("  The 19 bit hash value of \"{}\" is {}", string, Integer.toBinaryString(hashValue));
             assert hashValue == expectedValue;
 
             // test an array
@@ -131,7 +131,7 @@ public class UniversalHashFunctionTest {
             hashValue = function.hashValue(array);
             assert Integer.highestOneBit(hashValue) >> 19 == 0;
             expectedValue = 70825;
-            logger.info("The 19 bit hash value of {} is {}", array, Integer.toBinaryString(hashValue));
+            logger.info("  The 19 bit hash value of {} is {}", array, Integer.toBinaryString(hashValue));
             assert hashValue == expectedValue;
 
         }
