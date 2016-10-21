@@ -67,7 +67,7 @@ public final class Base32Utils {
     static public byte[] decode(String base32) {
         String string = base32.replaceAll("\\s", "");  // remove all white space
         int length = string.length();
-        byte[] bytes = new byte[length * 5 / 8];
+        byte[] bytes = new byte[(int) (length * 5.0 / 8.0)];
         for (int i = 0; i < length - 1; i++) {
             char character = string.charAt(i);
             byte chunk = (byte) lookupTable.indexOf((int) character);

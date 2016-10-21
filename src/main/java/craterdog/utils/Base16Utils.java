@@ -64,7 +64,7 @@ public final class Base16Utils {
     static public byte[] decode(String base16) {
         String string = base16.replaceAll("\\s", "");  // remove all white space
         int length = string.length();
-        byte[] bytes = new byte[(int) Math.ceil(length / 2)];
+        byte[] bytes = new byte[(int) Math.ceil(length / 2.0)];
         for (int i = 0; i < bytes.length; i++) {
             char firstCharacter = string.charAt(i * 2);
             int firstNibble = lookupTable.indexOf((int) firstCharacter);

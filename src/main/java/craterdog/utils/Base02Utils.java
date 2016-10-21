@@ -64,7 +64,7 @@ public final class Base02Utils {
     static public byte[] decode(String base2) {
         String string = base2.replaceAll("\\s", "");  // remove all white space
         int length = string.length();
-        byte[] bytes = new byte[(int) Math.ceil(length / 8)];
+        byte[] bytes = new byte[(int) Math.ceil(length / 8.0)];
         for (int i = 0; i < bytes.length; i++) {
             int b = 0;
             for (int j = 0; j < 8; j++) {
