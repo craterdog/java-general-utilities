@@ -163,7 +163,7 @@ public class Base32UtilsTest {
 
         bytes = RandomUtils.generateRandomBytes(200);
         encoded = Base32Utils.encode(bytes, "    ");
-        logger.info("  With wrapping: " + encoded);
+        logger.info("  With wrapping:\n" + encoded);
 
         logger.info("Completed testWrapping().\n");
     }

@@ -40,16 +40,13 @@ public final class Base32Utils {
         StringBuilder result = new StringBuilder();
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
-        if (indentation != null && length > 50) {
-            result.append("\n");
-            result.append(indentation);
-        }
+        if (indentation != null) result.append(indentation);
         encodeBytes(bytes[0], bytes[0], 0, result);
         for (int i = 1; i < length; i++) {
-            if (indentation != null && i % 50 == 0) {
+            if (i % 50 == 0) {
                 // format to indented 80 character blocks
                 result.append("\n");
-                result.append(indentation);
+                if (indentation != null) result.append(indentation);
             }
             encodeBytes(bytes[i - 1], bytes[i], i, result);
         }

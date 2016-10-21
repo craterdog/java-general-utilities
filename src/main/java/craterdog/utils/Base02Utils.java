@@ -40,16 +40,15 @@ public final class Base02Utils {
         StringBuilder result = new StringBuilder();
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
-        for (int i = 0; i < length; i++) {
-            if (indentation != null && length > 10 && i % 10 == 0) {
+        if (indentation != null) result.append(indentation);
+        encodeByte(bytes, 0, result);
+        for (int i = 1; i < length; i++) {
+            if (i % 10 == 0) {
                 // format to indented 80 character blocks
                 result.append("\n");
-                result.append(indentation);
+                if (indentation != null) result.append(indentation);
             }
-            for (int j = 0; j < 8; j++) {
-                int bit = (bytes[i] & (1 << (7 - j))) >>> (7 - j);
-                result.append(bit);
-            }
+            encodeByte(bytes, i, result);
         }
         return result.toString();
     }
@@ -66,20 +65,32 @@ public final class Base02Utils {
         int length = string.length();
         byte[] bytes = new byte[(int) Math.ceil(length / 8.0)];
         for (int i = 0; i < bytes.length; i++) {
-            int b = 0;
-            for (int j = 0; j < 8; j++) {
-                char character = string.charAt(i * 8 + j);
-                int bit = lookupTable.indexOf(character);
-                if (bit < 0) throw new NumberFormatException("Attempted to decode a string that is not base 2: " + string);
-                b = (b << 1) | bit;
-            }
-            bytes[i] = (byte) b;
+            decodeByte(string, i, bytes);
         }
         return bytes;
     }
 
 
     static private final String lookupTable = "01";
+
+    static private void encodeByte(byte[] bytes, int byteIndex, StringBuilder result) {
+        for (int i = 0; i < 8; i++) {
+            int bit = (bytes[byteIndex] & (1 << (7 - i))) >>> (7 - i);
+            result.append(bit);
+        }
+    }
+
+
+    static private void decodeByte(String string, int byteIndex, byte[] bytes) {
+        int b = 0;
+        for (int i = 0; i < 8; i++) {
+            char character = string.charAt(byteIndex * 8 + i);
+            int bit = lookupTable.indexOf(character);
+            if (bit < 0) throw new NumberFormatException("Attempted to decode a string that is not base 2: " + string);
+            b = (b << 1) | bit;
+        }
+        bytes[byteIndex] = (byte) b;
+    }
 
 
     private Base02Utils() {

@@ -76,10 +76,10 @@ public class ExamplesTest {
 
         // Print it out using different number bases
         logger.info("  The string is:\n{}\n", string);
-        logger.info("  Its bytes in base 2 are: {}\n", Base02Utils.encode(bytes, indentation));
-        logger.info("  Its bytes in base 16 are: {}\n", Base16Utils.encode(bytes, indentation));
-        logger.info("  Its bytes in base 32 are: {}\n", Base32Utils.encode(bytes, indentation));
-        logger.info("  Its bytes in base 64 are: {}\n", Base64Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 2 are:\n{}\n", Base02Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 16 are:\n{}\n", Base16Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 32 are:\n{}\n", Base32Utils.encode(bytes, indentation));
+        logger.info("  Its bytes in base 64 are:\n{}\n", Base64Utils.encode(bytes, indentation));
 
         logger.info("Completed testUtilsClassesExamples().\n");
     }

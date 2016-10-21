@@ -162,7 +162,7 @@ public class Base64UtilsTest {
 
         bytes = RandomUtils.generateRandomBytes(360);
         encoded = Base64Utils.encode(bytes, "    ");
-        logger.info("  With wrapping: " + encoded);
+        logger.info("  With wrapping:\n" + encoded);
 
         logger.info("Completed testWrapping().\n");
     }

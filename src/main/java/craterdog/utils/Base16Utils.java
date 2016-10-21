@@ -40,16 +40,15 @@ public final class Base16Utils {
         StringBuilder result = new StringBuilder();
         int length = bytes.length;
         if (length == 0) return "";  // empty byte array
-        for (int i = 0; i < length; i++) {
-            if (indentation != null && length > 40 && i % 40 == 0) {
+        if (indentation != null) result.append(indentation);
+        encodeByte(bytes, 0, result);
+        for (int i = 1; i < length; i++) {
+            if (i % 40 == 0) {
                 // format to indented 80 character blocks
                 result.append("\n");
-                result.append(indentation);
+                if (indentation != null) result.append(indentation);
             }
-            int nibble = (bytes[i] & 0xF0) >>> 4;
-            result.append(lookupTable.charAt(nibble));
-            nibble = bytes[i] & 0x0F;
-            result.append(lookupTable.charAt(nibble));
+            encodeByte(bytes, i, result);
         }
         return result.toString();
     }
@@ -66,19 +65,31 @@ public final class Base16Utils {
         int length = string.length();
         byte[] bytes = new byte[(int) Math.ceil(length / 2.0)];
         for (int i = 0; i < bytes.length; i++) {
-            char firstCharacter = string.charAt(i * 2);
-            int firstNibble = lookupTable.indexOf((int) firstCharacter);
-            if (firstNibble < 0) throw new NumberFormatException("Attempted to decode a string that is not base 16: " + string);
-            char secondCharacter = string.charAt(i * 2 + 1);
-            int secondNibble = lookupTable.indexOf((int) secondCharacter);
-            if (secondNibble < 0) throw new NumberFormatException("Attempted to decode a string that is not base 16: " + string);
-            bytes[i] = (byte) ((firstNibble << 4) | secondNibble);
+            decodeByte(string, i, bytes);
         }
         return bytes;
     }
 
 
     static private final String lookupTable = "0123456789ABCDEF";
+
+    static private void encodeByte(byte[] bytes, int byteIndex, StringBuilder result) {
+        int nibble = (bytes[byteIndex] & 0xF0) >>> 4;
+        result.append(lookupTable.charAt(nibble));
+        nibble = bytes[byteIndex] & 0x0F;
+        result.append(lookupTable.charAt(nibble));
+    }
+
+
+    static private void decodeByte(String string, int byteIndex, byte[] bytes) {
+        char firstCharacter = string.charAt(byteIndex * 2);
+        int firstNibble = lookupTable.indexOf((int) firstCharacter);
+        if (firstNibble < 0) throw new NumberFormatException("Attempted to decode a string that is not base 16: " + string);
+        char secondCharacter = string.charAt(byteIndex * 2 + 1);
+        int secondNibble = lookupTable.indexOf((int) secondCharacter);
+        if (secondNibble < 0) throw new NumberFormatException("Attempted to decode a string that is not base 16: " + string);
+        bytes[byteIndex] = (byte) ((firstNibble << 4) | secondNibble);
+    }
 
 
     private Base16Utils() {

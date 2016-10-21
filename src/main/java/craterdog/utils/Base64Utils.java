@@ -42,17 +42,15 @@ public class Base64Utils {
     public static String encode(byte[] bytes, String indentation) {
         String encoded = Base64.encodeBase64String(bytes).replaceAll("\\s", "");  // remove all white space
         StringBuilder result = new StringBuilder();
-        if (encoded.length() > 80) {
-            for (int c = 0; c < encoded.length(); c++) {
-                if (indentation != null && c % 80 == 0) {
-                    // format to indented 80 character blocks
-                    result.append("\n");
-                    result.append(indentation);
-                }
-                result.append(encoded.charAt(c));
+        if (indentation != null) result.append(indentation);
+        result.append(encoded.charAt(0));
+        for (int c = 1; c < encoded.length(); c++) {
+            if (c % 80 == 0) {
+                // format to indented 80 character blocks
+                result.append("\n");
+                if (indentation != null) result.append(indentation);
             }
-        } else {
-            result.append(encoded);
+            result.append(encoded.charAt(c));
         }
         return result.toString();
     }
