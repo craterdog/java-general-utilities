@@ -40,6 +40,8 @@ public class Base64Utils {
      * @return The base 64 encoded string.
      */
     public static String encode(byte[] bytes, String indentation) {
+        int length = bytes.length;
+        if (length == 0) return "";  // empty byte array
         String encoded = Base64.encodeBase64String(bytes).replaceAll("\\s", "");  // remove all white space
         StringBuilder result = new StringBuilder();
         if (indentation != null) result.append(indentation);
