@@ -24,10 +24,10 @@ The following highlights the utility classes provided by this project:
 ### Quick Links
 For more detail on this project click on the following links:
 
- * [javadocs](http://craterdog.github.io/java-general-utilities/latest/index.html)
+ * [javadocs](https://craterdog.github.io/java-general-utilities/latest/index.html)
  * [wiki](https://github.com/craterdog/java-general-utilities/wiki)
  * [release notes](https://github.com/craterdog/java-general-utilities/wiki/releases)
- * [website](http://craterdog.com)
+ * [website](https://craterdog.com)
 
 ### Getting Started
 To get started using these utilities, include the following dependency in your maven pom.xml file:
@@ -49,5 +49,5 @@ click [here](https://github.com/craterdog/maven-parent-poms) to get started down
 companies for their contributions to the development and testing of various
 components within this project:
 
- * *Blackhawk Network* (http://blackhawknetwork.com)
+ * *Blackhawk Network* (https://blackhawknetwork.com)
 
