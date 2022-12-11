@@ -1,5 +1,7 @@
 ![Java General Utilities](https://github.com/craterdog/java-general-utilities/blob/master/docs/images/Toolkit.jpg)
 
+# THIS REPOSITORY HAS BEEN ARCHIVED AND IS NO LONGER SUPPORTED
+
 ### General Java Utilities
 This project contains a set of useful Java general utility classes. The classes focus on the following areas:
 
